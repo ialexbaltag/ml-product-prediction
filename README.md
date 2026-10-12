@@ -61,7 +61,7 @@ Train the model: cd src
 In the root directory will be created category_model.pkl file
 
 Run Inferrence:
-    Based on model_test.py predict the category of a product.
+    Based on test_model.py predict the category of a product.
 
 Author:
     This is a small project in educational purpose demonstrating how 
