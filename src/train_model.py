@@ -48,12 +48,10 @@ df['category_label'] = df['category_label'].astype(str).str.lower().str.strip()
 
 # Convert column type to 'category'
 df['category_label'] = df['category_label'].astype('category')
-print("\nCategory label column converted to type:", df['category_label'].dtype)
 
 
 # Drop columns that are not useful for modeling
 df = df.drop(columns=['product_id', 'merchant_id','number_of_views', 'merchant_rating','listing_date'])
-
 
 # Create new column with length of each product_title
 df['product_title_length'] = df['product_title'].astype(str).str.len()
@@ -68,15 +66,11 @@ df["product_brand"] = (
     .str.lower()
 )
 
-
-
 # training models
 
 # Features and label
 X = df[["product_brand", "product_title", "product_title_length"]]
 y = df["category_label"]
-
-
 
 
 # Preprocessor: TF-IDF for text, MinMaxScaler for numeric feature
@@ -100,6 +94,5 @@ pipeline.fit(X, y)
 
 # save the model to a file
 joblib.dump(pipeline,"model/category_model.pkl")
-
 
 print("Model trained and saved as 'model/category_model.pkl'")
